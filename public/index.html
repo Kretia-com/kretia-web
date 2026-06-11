@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operativa empresarial y automatización inteligente | Kretia</title>
+<meta name="description" content="Diseñamos sistemas inteligentes que automatizan procesos reales y transforman cómo operan las empresas. Tecnología aplicada al negocio.">
+<meta name="theme-color" content="#8A4FFF">
+<link rel="canonical" href="https://kretia.up.railway.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kretia — Automatización de procesos empresariales con IA">
+<meta property="og:description" content="Diseñamos sistemas inteligentes que automatizan procesos reales y transforman cómo operan las empresas.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2315141A'/%3E%3Crect x='8' y='7' width='4.5' height='18' rx='1.2' fill='%238A4FFF'/%3E%3Crect x='16.5' y='9' width='6.5' height='6.5' rx='1.6' fill='%238A4FFF'/%3E%3Crect x='16.5' y='17.5' width='6.5' height='6.5' rx='1.6' fill='%238A4FFF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #F2F1EF;   /* light warm gray */
+    --paper:     #FFFFFF;
+    --ink:       #15141A;
+    --ink-2:     #46444F;
+    --muted:     #9A98A0;
+    --faint:     #C4C2CA;   /* de-emphasized symptom text */
+    --line:      rgba(21,20,26,0.12);
+    --line-2:    rgba(21,20,26,0.26);
+    --lavender:  #C3BEF7;   /* marca · secundario (bandas, acentos) */
+    --lavender-2:#D8D2F7;   /* lavanda más claro */
+    --mint:      #EFFFFA;   /* marca · secundario (blanco menta) */
+    --violet:    #8A4FFF;   /* marca · PRIMARIO */
+    --violet-d:  #7838F2;   /* hover / profundo */
+    --sans:      'Rubik', system-ui, -apple-system, sans-serif;
+    --mono:      'Geist Mono', ui-monospace, 'SF Mono', monospace;
+    --max:       1280px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  body {
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--violet); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 48px; }
+
+  /* highlight marker — the brand "con IA" sticker, generalized */
+  .hl {
+    background: var(--violet);
+    color: #fff;
+    padding: 0.04em 0.28em;
+    border-radius: 6px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .hl--lav { background: var(--lavender); color: var(--ink); }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 30;
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+  .logo {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--violet); text-decoration: none;
+  }
+  .logo-k { height: 19px; width: auto; fill: currentColor; display: block; }
+  .logo-word {
+    font-weight: 700; font-size: 25px; line-height: 1;
+    letter-spacing: -0.04em; color: var(--ink);
+  }
+  .nav {
+    display: flex; gap: 34px; align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+  .nav a:hover { color: var(--ink); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--violet);
+    color: #fff;
+    padding: 11px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .btn:hover { background: var(--violet-d); transform: translateY(-1px); }
+  .btn--ghost {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--line-2);
+  }
+  .btn--ghost:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .btn--lav { background: var(--ink); color: #fff; }
+  .btn--lav:hover { background: var(--violet); }
+
+  /* ============ SECTION CHROME ============ */
+  section { padding: 120px 0; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--violet);
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  .section-title {
+    font-weight: 800;
+    font-size: clamp(34px, 4.2vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 0;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 90px 48px 96px;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 60px;
+    align-items: center;
+    min-height: 560px;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--lavender);
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lavender); box-shadow: 0 0 0 0 rgba(138,79,255,.55); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(138,79,255,.55);} 70%{box-shadow:0 0 0 8px rgba(138,79,255,0);} 100%{box-shadow:0 0 0 0 rgba(138,79,255,0);} }
+  .hero h1 {
+    font-weight: 800;
+    font-size: clamp(42px, 5.4vw, 80px);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    margin: 0;
+    color: #fff;
+    text-wrap: balance;
+  }
+  .hero h1 .hl { display: inline-block; transform: rotate(-1.5deg); }
+  .hero-lede {
+    margin: 40px 0 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.74);
+    max-width: 520px;
+  }
+  .hero-cta { margin-top: 40px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+  /* hero visual styles defined further down (live panel) */
+
+  /* hero strip metrics */
+  .hero-strip {
+    border-top: 1px solid rgba(255,255,255,0.14);
+    position: relative; z-index: 2;
+  }
+  .hero-strip-inner {
+    max-width: var(--max); margin: 0 auto; padding: 0 48px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .hero-strip .cell {
+    padding: 26px 24px 26px 0;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-strip .cell:last-child { border-right: 0; }
+  .hero-strip .k { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--lavender); margin-bottom: 8px; }
+  .hero-strip .v { color: #fff; font-size: 15px; font-weight: 600; }
+  .hero-strip .v span { color: rgba(255,255,255,0.55); font-weight: 400; }
+
+  /* ============ LAVENDER BAND (manifesto lede) ============ */
+  .band {
+    background: var(--lavender);
+    padding: 90px 0;
+  }
+  .band-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: center;
+  }
+  .band h2 {
+    font-weight: 800;
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+  .band p { font-size: 17px; line-height: 1.6; color: #2A2540; margin: 0; }
+
+  /* ============ PROBLEM / §01 ============ */
+  .problem-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+  .symptom-list { list-style: none; padding: 0; margin: 0; }
+  .symptom-list li {
+    font-weight: 800;
+    font-size: clamp(26px, 3.4vw, 44px);
+    line-height: 1.18;
+    letter-spacing: -0.03em;
+    color: var(--faint);
+    padding: 6px 0;
+    transition: color .25s ease, padding-left .25s ease;
+    display: flex; align-items: baseline; gap: 18px;
+    cursor: default;
+  }
+  .symptom-list li .n {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    flex: 0 0 auto;
+    transform: translateY(-0.4em);
+  }
+  .symptom-list li:hover { color: var(--ink); padding-left: 10px; }
+  .symptom-list li.active { color: var(--ink); }
+  .symptom-list li.active .n { color: var(--violet); }
+
+  /* ============ WHAT / §02 ============ */
+  .do-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 70px;
+    align-items: start;
+  }
+  .do-body .lede { margin: 24px 0 34px; max-width: 520px; }
+  .pillars { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .pillar {
+    display: grid; grid-template-columns: 26px 1fr; gap: 16px;
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+  }
+  .pillar .mark { color: var(--violet); font-weight: 800; font-size: 18px; line-height: 1.2; }
+  .pillar h4 { font-weight: 700; font-size: 16px; margin: 0 0 5px; letter-spacing: -0.01em; }
+  .pillar p { margin: 0; color: var(--ink-2); font-size: 14px; line-height: 1.55; max-width: 440px; }
+
+  .capabilities {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 1px 0 rgba(21,20,26,0.03), 0 30px 60px -40px rgba(21,20,26,0.4);
+  }
+  .cap-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 18px; margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+  }
+  .cap-head b { color: var(--ink); font-weight: 500; }
+  .cap-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 14px;
+    padding: 13px 0; border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .cap-row:last-child { border-bottom: 0; }
+  .cap-row .name { font-size: 14px; font-weight: 500; }
+  .cap-row .name .b { color: var(--violet); }
+  .cap-row .tool { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ============ METHOD / §03 ============ */
+  .method-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    margin-top: 56px;
+  }
+  .step {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .step .badge {
+    width: 40px; height: 40px; border-radius: 11px;
+    background: var(--violet); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 17px;
+    margin-bottom: 22px;
+  }
+  .step h3 { font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 10px; }
+  .step p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin: 0; }
+  .step .dur { margin-top: 18px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .method-closer {
+    margin-top: 44px; font-size: 19px; font-weight: 600; color: var(--ink);
+    max-width: 720px; letter-spacing: -0.015em;
+  }
+
+  /* ============ SYSTEM / §04 ============ */
+  .anatomy-head {
+    display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; align-items: end;
+    margin-bottom: 50px;
+  }
+  .anatomy-head .lede { max-width: 460px; }
+  .diagram {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 44px;
+    position: relative; overflow: hidden;
+  }
+  .diagram-grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 26px 26px; opacity: 0.55; pointer-events: none;
+  }
+  .diagram-inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 200px 1fr 200px; gap: 64px;
+    align-items: center; min-height: 420px;
+  }
+  .col-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .col-label b { color: var(--violet); font-weight: 500; }
+  .node-col { display: flex; flex-direction: column; gap: 10px; }
+  .node {
+    background: var(--bg); border: 1px solid var(--line-2);
+    border-radius: 10px; padding: 11px 14px;
+    display: grid; grid-template-columns: 8px 1fr auto; gap: 10px; align-items: center;
+    font-size: 13px; font-weight: 600;
+  }
+  .node .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--violet); }
+  .node .meta { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; }
+  .node--dim { opacity: 0.5; }
+  .node--dim .dot { background: var(--muted); }
+  .engine {
+    background: var(--ink); color: #fff;
+    border-radius: 14px; padding: 28px 24px; text-align: center;
+    box-shadow: 0 24px 50px -24px rgba(138,79,255,0.55);
+  }
+  .engine .label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--lavender); margin-bottom: 12px; }
+  .engine .name { font-weight: 800; font-size: 26px; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .engine .desc { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); line-height: 1.7; }
+  .engine .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.18); }
+  .engine .stats .s { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); }
+  .engine .stats .s b { display: block; font-family: var(--sans); font-size: 17px; color: #fff; margin-top: 3px; font-weight: 700; letter-spacing: -0.01em; text-transform: none; }
+  .diagram-svg { position: absolute; inset: 44px; pointer-events: none; z-index: 0; }
+  .diagram-foot { margin-top: 22px; display: flex; justify-content: space-between; gap: 30px; font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .diagram-foot .c { color: var(--violet); }
+
+  /* ============ POSITIONING / §05 (lavender band) ============ */
+  .pos-band { background: var(--lavender); padding: 110px 0; }
+  .pos-grid { display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); gap: 70px; align-items: center; }
+  .pos-grid .eyebrow { color: var(--violet-d); }
+  .pos-body h2 { font-weight: 800; font-size: clamp(30px, 3.6vw, 50px); line-height: 1.02; letter-spacing: -0.035em; margin: 0 0 22px; }
+  .pos-body p { font-size: 16px; line-height: 1.6; color: #2A2540; margin: 0 0 14px; max-width: 460px; }
+  .spectrum { display: grid; gap: 14px; }
+  .sp-card {
+    background: rgba(255,255,255,0.55); border: 1px solid rgba(21,20,26,0.12);
+    border-radius: 14px; padding: 22px 24px;
+    display: grid; grid-template-columns: 130px 1fr 44px; gap: 20px; align-items: center;
+  }
+  .sp-card.mid { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .sp-card .tag { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+  .sp-card.mid .tag { color: var(--lavender); }
+  .sp-card h4 { font-weight: 700; font-size: 18px; letter-spacing: -0.015em; margin: 4px 0 0; }
+  .sp-card p { font-size: 13px; line-height: 1.5; color: #2A2540; margin: 0; }
+  .sp-card.mid p { color: rgba(255,255,255,0.72); }
+  .sp-card .v { font-weight: 800; font-size: 24px; text-align: center; color: var(--muted); }
+  .sp-card.mid .v { color: var(--lavender); }
+
+  /* ============ MEASURE / §06 — big numbers, honest ============ */
+  .measure-head { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; align-items: end; margin-bottom: 30px; }
+  .measure-head .lede { max-width: 460px; }
+  .measure-head .note { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 14px; }
+  .measure-head .note b { color: var(--violet); font-weight: 500; }
+  .measure-list { margin-top: 30px; }
+  .measure-row {
+    display: grid; grid-template-columns: 90px minmax(0,1fr) minmax(0,1fr); gap: 40px;
+    padding: 38px 0; border-top: 1px solid var(--line); align-items: start;
+  }
+  .measure-row:last-child { border-bottom: 1px solid var(--line); }
+  .measure-row .tag { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--violet); text-transform: uppercase; letter-spacing: 0.08em; padding-top: 14px; }
+  .measure-row .formula {
+    font-weight: 800; font-size: clamp(30px, 3.6vw, 50px); line-height: 1; letter-spacing: -0.03em; color: var(--ink);
+  }
+  .measure-row .formula b { color: var(--violet); }
+  .measure-row .formula sub { font-size: 0.42em; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .measure-row .desc { color: var(--ink-2); font-size: 15px; line-height: 1.55; padding-top: 8px; }
+  .measure-row .desc strong { color: var(--ink); font-weight: 700; }
+
+  /* ============ AUDIENCE / §07 ============ */
+  .audience-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 70px; align-items: start; }
+  .audience-grid .lede { margin-top: 24px; max-width: 420px; }
+  .aud-list { list-style: none; padding: 0; margin: 0; }
+  .aud-list li {
+    display: grid; grid-template-columns: 30px 1fr; gap: 16px;
+    padding: 20px 0; border-bottom: 1px solid var(--line); align-items: start;
+  }
+  .aud-list li:first-child { border-top: 1px solid var(--ink); }
+  .aud-list .ic {
+    width: 26px; height: 26px; border-radius: 7px; background: var(--lavender);
+    color: var(--violet-d); display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px; flex: 0 0 auto;
+  }
+  .aud-list .text { font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -0.015em; padding-top: 1px; }
+  .aud-list .text em { font-style: normal; color: var(--violet); }
+
+  /* ============ CTA / §08 ============ */
+  .cta { background: var(--ink); color: #fff; }
+  .cta .eyebrow { color: var(--lavender); }
+  .cta-grid { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 56px; align-items: end; }
+  .cta h2 { font-weight: 800; font-size: clamp(34px, 4.4vw, 60px); line-height: 1; letter-spacing: -0.04em; margin: 0; color: #fff; }
+  .cta h2 .hl { display: inline-block; transform: rotate(-1.5deg); }
+  .cta-lede { font-size: 18px; line-height: 1.55; color: rgba(255,255,255,0.74); margin: 32px 0 0; max-width: 540px; }
+  .cta-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .cta-side { border-left: 1px solid rgba(255,255,255,0.18); padding-left: 36px; }
+  .cta-side .label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+  .cta-side dl { margin: 0; }
+  .cta-side .row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,0.16); }
+  .cta-side .row:last-child { border-bottom: 0; }
+  .cta-side dt { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+  .cta-side dd { margin: 0; font-weight: 700; font-size: 15px; }
+  .cta-side dd b { color: var(--lavender); }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.55); border-top: 1px solid rgba(255,255,255,0.16); padding: 36px 0; }
+  .foot { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .foot .logo { color: #fff; }
+  .foot .logo-k { height: 17px; }
+  .foot .logo-word { color: #fff; font-size: 20px; }
+
+  /* ============ HERO LIVE PANEL (sustituye la foto) ============ */
+  .hero-visual {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: #1B1A22;
+    box-shadow: 0 40px 80px -40px rgba(0,0,0,0.6);
+  }
+  .panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.5);
+  }
+  .panel-head .lights { display: flex; gap: 6px; }
+  .panel-head .lights span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.18); }
+  .panel-head .lights span:last-child { background: var(--violet); }
+  .panel-body { padding: 18px 18px 20px; display: grid; gap: 7px; }
+  .pline {
+    display: grid; grid-template-columns: 66px 12px 1fr auto; gap: 10px; align-items: baseline;
+    font-family: var(--mono); font-size: 12px; line-height: 1.5;
+    color: rgba(255,255,255,0.72);
+    opacity: 0; transform: translateY(4px);
+    animation: lineIn .5s ease forwards;
+  }
+  .pline .t { color: rgba(255,255,255,0.4); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .pline .m { color: var(--lavender); }
+  .pline .src, .pline .dest { color: #fff; font-weight: 500; }
+  .pline .arr { color: rgba(255,255,255,0.4); }
+  .pline .ok { color: var(--lavender); font-size: 11px; }
+  @keyframes lineIn { to { opacity: 1; transform: none; } }
+  .panel-foot {
+    border-top: 1px dashed rgba(255,255,255,0.14);
+    padding: 12px 18px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.45);
+  }
+  .panel-foot b { color: #fff; font-weight: 500; }
+  .hero-tag {
+    position: absolute; left: 16px; bottom: 58px; z-index: 3;
+    display: none;
+  }
+
+  /* ============ CONTACT MODAL ============ */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(21,20,26,0.55);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal {
+    background: var(--paper);
+    border-radius: 18px;
+    width: 100%; max-width: 520px;
+    max-height: 92vh; overflow-y: auto;
+    box-shadow: 0 40px 90px -30px rgba(21,20,26,0.5);
+    transform: translateY(12px) scale(0.98);
+    transition: transform .2s ease;
+  }
+  .modal-overlay.open .modal { transform: none; }
+  .modal-top {
+    background: var(--ink); color: #fff;
+    padding: 28px 30px 26px;
+    border-radius: 18px 18px 0 0;
+    position: relative;
+  }
+  .modal-top .eyebrow { color: var(--lavender); margin-bottom: 14px; }
+  .modal-top h3 { font-weight: 800; font-size: 26px; letter-spacing: -0.03em; margin: 0; line-height: 1.05; }
+  .modal-top p { margin: 12px 0 0; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+  .modal-close {
+    position: absolute; top: 18px; right: 18px;
+    width: 34px; height: 34px; border-radius: 9px;
+    background: rgba(255,255,255,0.1); color: #fff;
+    border: 0; cursor: pointer; font-size: 18px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.22); }
+  .modal-body { padding: 26px 30px 30px; }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink-2); margin-bottom: 7px;
+  }
+  .field label .req { color: var(--violet); }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 12px 14px;
+    font-family: var(--sans); font-size: 15px; color: var(--ink);
+    background: var(--bg);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: 0; border-color: var(--violet);
+    box-shadow: 0 0 0 3px rgba(138,79,255,0.16);
+  }
+  .field textarea { resize: vertical; min-height: 84px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .modal-body .btn { width: 100%; justify-content: center; padding: 14px; font-size: 15px; margin-top: 6px; }
+  .modal-body .btn[disabled] { opacity: 0.6; cursor: default; }
+  .form-note { font-size: 12px; color: var(--muted); text-align: center; margin: 14px 0 0; line-height: 1.5; }
+  .form-error { color: #C0392B; font-size: 13px; margin: 12px 0 0; display: none; }
+  .form-success { display: none; padding: 44px 30px; text-align: center; background: var(--mint); border-radius: 0 0 18px 18px; }
+  .form-success .check {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--violet); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin: 0 auto 20px;
+  }
+  .form-success h3 { font-weight: 800; font-size: 24px; letter-spacing: -0.02em; margin: 0 0 10px; }
+  .form-success p { color: var(--ink-2); font-size: 15px; line-height: 1.55; margin: 0 auto; max-width: 360px; }
+  .modal.done .modal-top, .modal.done .modal-body { display: none; }
+  .modal.done .form-success { display: block; }
+
+  /* ============ VERSION SWITCHER ============ */
+  .vswitch {
+    position: fixed; right: 24px; bottom: 24px; z-index: 80;
+    display: flex; gap: 0; background: var(--paper);
+    border: 1px solid var(--line-2); border-radius: 999px; padding: 4px;
+    box-shadow: 0 12px 30px -10px rgba(21,20,26,0.3);
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .vswitch a { padding: 8px 13px; border-radius: 999px; color: var(--ink-2); transition: all .15s; }
+  .vswitch a:hover { color: var(--ink); }
+  .vswitch a.active { background: var(--violet); color: #fff; font-weight: 500; }
+  .vswitch .label { padding: 8px 4px 8px 12px; color: var(--muted); font-size: 10px; }
+
+  @media (max-width: 1024px) {
+    .hero-inner, .band-inner, .problem-head, .do-grid, .anatomy-head, .pos-grid, .measure-head, .audience-grid, .cta-grid { grid-template-columns: 1fr; gap: 44px; }
+    .method-grid { grid-template-columns: 1fr; }
+    .hero-strip-inner { grid-template-columns: 1fr 1fr; }
+    .measure-row { grid-template-columns: 1fr; gap: 14px; }
+    .diagram-inner { grid-template-columns: 1fr; }
+    .diagram-svg { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== TOP BAR =================== -->
+<header class="topbar" data-screen-label="Top bar">
+  <div class="wrap topbar-inner">
+    <a href="#" class="logo" aria-label="Kretia">
+      <svg class="logo-k" viewBox="0 0 78 100" aria-hidden="true"><rect x="6" y="4" width="19" height="92" rx="3"></rect><rect x="40" y="14" width="30" height="30" rx="4"></rect><rect x="40" y="56" width="30" height="30" rx="4"></rect></svg><span class="logo-word">retia</span>
+    </a>
+    <nav class="nav">
+      <a href="#problem">Problema</a>
+      <a href="#what">Qué hacemos</a>
+      <a href="#method">Método</a>
+      <a href="#system">Sistema</a>
+      <a href="#measure">Impacto</a>
+      <a href="/portfolio">Portfolio</a>
+    </nav>
+    <button type="button" class="btn" data-form>Analiza ahora</button>
+  </div>
+</header>
+
+<!-- =================== HERO =================== -->
+<section class="hero" data-screen-label="Hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="dot"></span>Operativa · Sistemas · Automatización</div>
+      <h1>Automatización de procesos empresariales <span class="hl">con IA</span></h1>
+      <p class="hero-lede">
+        Cuando los procesos crecen sin estructura, el trabajo se vuelve manual, lento y difícil de escalar. En Kretia diseñamos sistemas que eliminan tareas manuales, conectan tus herramientas y hacen que tu operativa funcione con lógica, no con esfuerzo.
+      </p>
+      <div class="hero-cta">
+        <button type="button" class="btn" data-form>Solicitar análisis de operativa</button>
+        <a href="#what" class="btn btn--ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);">Cómo trabajamos</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="panel-head">
+        <span>kretia · core · ops trace</span>
+        <span class="lights"><span></span><span></span><span></span></span>
+      </div>
+      <div class="panel-body" id="trace">
+        <div class="pline" style="animation-delay:.1s"><span class="t">09:12:04</span><span class="m">›</span><span><span class="src">Stripe</span> <span class="arr">→</span> <span class="dest">HubSpot</span> · pago conciliado</span><span class="ok">240ms ✓</span></div>
+        <div class="pline" style="animation-delay:.5s"><span class="t">09:12:07</span><span class="m">›</span><span><span class="src">Notion</span> <span class="arr">→</span> <span class="dest">Slack #ops</span> · brief asignado</span><span class="ok">88ms ✓</span></div>
+        <div class="pline" style="animation-delay:.9s"><span class="t">09:12:11</span><span class="m">›</span><span><span class="src">Gmail</span> <span class="arr">→</span> <span class="dest">CRM</span> · lead enriquecido</span><span class="ok">312ms ✓</span></div>
+        <div class="pline" style="animation-delay:1.3s"><span class="t">09:12:14</span><span class="m">›</span><span><span class="src">Holded</span> <span class="arr">→</span> <span class="dest">Drive</span> · factura archivada</span><span class="ok">154ms ✓</span></div>
+        <div class="pline" style="animation-delay:1.7s"><span class="t">09:12:19</span><span class="m">›</span><span><span class="src">Typeform</span> <span class="arr">→</span> <span class="dest">Airtable</span> · onboarding lanzado</span><span class="ok">410ms ✓</span></div>
+        <div class="pline" style="animation-delay:2.1s"><span class="t">09:12:22</span><span class="m">›</span><span><span class="src">Calendly</span> <span class="arr">→</span> <span class="dest">CRM</span> · llamada agendada</span><span class="ok">190ms ✓</span></div>
+      </div>
+      <div class="panel-foot">
+        <span>Procesos hoy <b>142</b> · errores <b>0</b></span>
+        <span>Intervención manual <b>0</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <div class="hero-strip-inner">
+      <div class="cell"><div class="k">Categoría</div><div class="v">Sistemas operativos</div></div>
+      <div class="cell"><div class="k">Modelo</div><div class="v">Diseño <span>+</span> construcción</div></div>
+      <div class="cell"><div class="k">Stack</div><div class="v">23 integraciones</div></div>
+      <div class="cell"><div class="k">Disponibilidad</div><div class="v">3 slots <span>· Q3 2026</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== LAVENDER BAND =================== -->
+<div class="band" data-screen-label="Banda intro">
+  <div class="wrap band-inner">
+    <h2>No vendemos software.<br>Diseñamos cómo funciona<br>tu negocio por dentro.</h2>
+    <p>La mayoría de empresas ya tienen herramientas, automatizaciones y software de sobra. Y aun así, la operativa sigue siendo manual, fragmentada y dependiente de personas concretas. Nuestro trabajo es rediseñar esa capa para que escale contigo.</p>
+  </div>
+</div>
+
+<!-- =================== PROBLEM / §01 =================== -->
+<section id="problem" data-screen-label="Problema">
+  <div class="wrap">
+    <div class="problem-head">
+      <div>
+        <div class="eyebrow">§01 — El problema</div>
+        <h2 class="section-title">El problema no es la tecnología. Es cómo están diseñados los procesos.</h2>
+      </div>
+      <p class="lede" style="align-self:end;">
+        Tener más herramientas no resuelve el caos: lo multiplica. Estos son los cinco síntomas que vemos una y otra vez antes de entrar a rediseñar una operativa.
+      </p>
+    </div>
+    <ul class="symptom-list" id="symptoms">
+      <li><span class="n">01</span>Información dispersa en 6&ndash;12 herramientas distintas</li>
+      <li><span class="n">02</span>Tareas repetitivas que nadie ha cuestionado</li>
+      <li class="active"><span class="n">03</span>Automatizaciones aisladas que no hablan entre sí</li>
+      <li><span class="n">04</span>Procesos que viven solo en la cabeza de alguien</li>
+      <li><span class="n">05</span>Crecimiento que multiplica el caos, no la capacidad</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =================== WHAT / §02 =================== -->
+<section id="what" style="background:var(--paper);" data-screen-label="Qué hacemos">
+  <div class="wrap">
+    <div class="do-grid">
+      <div class="do-body">
+        <div class="eyebrow">§02 — Qué hacemos</div>
+        <h2 class="section-title">Automatización y diseño de sistemas para empresas.</h2>
+        <p class="lede">Analizamos cómo funciona tu operativa de verdad &mdash; no cómo está documentada &mdash; y rediseñamos los procesos críticos para que se ejecuten solos, con lógica auditable y herramientas que ya tienes.</p>
+        <div class="pillars">
+          <div class="pillar"><span class="mark">+</span><div><h4>No implantamos software estándar</h4><p>Trabajamos con tu stack. Si hace falta una herramienta nueva, la justificamos. Si no, no la metemos.</p></div></div>
+          <div class="pillar"><span class="mark">+</span><div><h4>Diseñamos y ejecutamos</h4><p>No entregamos un PDF con recomendaciones. Cerramos el proyecto con los sistemas ya funcionando en producción.</p></div></div>
+          <div class="pillar"><span class="mark">+</span><div><h4>Encajamos en tu manera de operar</h4><p>Tu negocio no es estándar. Nuestras soluciones tampoco. Adaptamos cada sistema a las restricciones reales del equipo.</p></div></div>
+        </div>
+      </div>
+
+      <aside class="capabilities">
+        <div class="cap-head"><span>Stack &amp; capacidades</span><span><b>23</b> integraciones · <b>04</b> disciplinas</span></div>
+        <div class="cap-row"><span class="name"><span class="b">↳</span> Integración entre herramientas</span><span class="tool">api · webhooks · n8n</span></div>
+        <div class="cap-row"><span class="name"><span class="b">↳</span> Orquestación de procesos</span><span class="tool">workflows · sla</span></div>
+        <div class="cap-row"><span class="name"><span class="b">↳</span> Documentación viva</span><span class="tool">notion · md</span></div>
+        <div class="cap-row"><span class="name"><span class="b">↳</span> Capa de datos unificada</span><span class="tool">airtable · postgres</span></div>
+        <div class="cap-row"><span class="name"><span class="b">↳</span> Asistentes y agentes IA</span><span class="tool">claude · openai</span></div>
+        <div class="cap-row"><span class="name"><span class="b">↳</span> Paneles operativos</span><span class="tool">retool · metabase</span></div>
+        <div class="cap-row"><span class="name"><span class="b">↳</span> Onboarding y handover</span><span class="tool">loom · runbooks</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- =================== METHOD / §03 =================== -->
+<section id="method" data-screen-label="Metodología">
+  <div class="wrap">
+    <div class="eyebrow">§03 — Metodología</div>
+    <h2 class="section-title">¿Cuál es nuestra metodología? Tres fases, sin powerpoints infinitos.</h2>
+    <div class="method-grid">
+      <article class="step">
+        <div class="badge">1</div>
+        <h3>Mapeamos tu operativa real</h3>
+        <p>Entrevistas con tu equipo, observación de procesos en vivo y auditoría del stack. Identificamos cuellos de botella, tareas manuales y dónde se pierde la información.</p>
+        <div class="dur">02&ndash;03 semanas</div>
+      </article>
+      <article class="step">
+        <div class="badge">2</div>
+        <h3>Construimos los sistemas que faltan</h3>
+        <p>Diseñamos e implementamos los procesos clave: integraciones, automatizaciones coordinadas, capas de datos y paneles de control. Todo en producción.</p>
+        <div class="dur">04&ndash;08 semanas</div>
+      </article>
+      <article class="step">
+        <div class="badge">3</div>
+        <h3>Dejamos una base que evoluciona sola</h3>
+        <p>Documentación viva, runbooks ejecutables y handover real al equipo interno. Opcionalmente, mantenimiento ligero para evolucionar según crece el negocio.</p>
+        <div class="dur">en continuo</div>
+      </article>
+    </div>
+    <p class="method-closer">El objetivo no es mejorar procesos rotos. Es rediseñarlos desde la base para que funcionen sin pedir más esfuerzo a tu equipo.</p>
+  </div>
+</section>
+
+<!-- =================== SYSTEM / §04 =================== -->
+<section id="system" style="background:var(--paper);" data-screen-label="Anatomía">
+  <div class="wrap">
+    <div class="anatomy-head">
+      <div>
+        <div class="eyebrow">§04 — Anatomía de un sistema</div>
+        <h2 class="section-title">Esto es lo que realmente dejamos funcionando.</h2>
+      </div>
+      <p class="lede">No es un diagrama de marketing. Es la forma típica de uno de nuestros sistemas: tus herramientas existentes coordinadas por una capa de orquestación, con datos unificados y supervisión humana solo donde aporta valor.</p>
+    </div>
+
+    <div class="diagram" data-screen-label="Diagrama">
+      <div class="diagram-grid-bg"></div>
+      <svg class="diagram-svg" viewBox="0 0 1000 420" preserveAspectRatio="none">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#15141A"/></marker>
+          <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8A4FFF"/></marker>
+        </defs>
+        <g fill="none" stroke="#15141A" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#a1)">
+          <path d="M200,40  C300,40 380,210 480,210"/>
+          <path d="M200,110 C300,110 380,210 480,210"/>
+          <path d="M200,180 C330,180 400,210 480,210"/>
+          <path d="M200,250 C330,250 400,210 480,210"/>
+          <path d="M200,320 C300,320 380,210 480,210"/>
+          <path d="M200,390 C300,390 380,210 480,210"/>
+        </g>
+        <g fill="none" stroke="#8A4FFF" stroke-width="1.4" marker-end="url(#a2)">
+          <path d="M620,210 C700,40  720,40  790,40"/>
+          <path d="M620,210 C700,110 720,110 790,110"/>
+          <path d="M620,210 C700,180 720,180 790,180"/>
+          <path d="M620,210 C700,250 720,250 790,250"/>
+          <path d="M620,210 C700,320 720,320 790,320"/>
+        </g>
+      </svg>
+      <div class="diagram-inner">
+        <div>
+          <div class="col-label">Fuentes <b>· input</b></div>
+          <div class="node-col">
+            <div class="node"><span class="dot"></span><span>Stripe</span><span class="meta">pagos</span></div>
+            <div class="node"><span class="dot"></span><span>HubSpot</span><span class="meta">crm</span></div>
+            <div class="node"><span class="dot"></span><span>Holded</span><span class="meta">erp</span></div>
+            <div class="node"><span class="dot"></span><span>Gmail</span><span class="meta">email</span></div>
+            <div class="node"><span class="dot"></span><span>Typeform</span><span class="meta">forms</span></div>
+            <div class="node node--dim"><span class="dot"></span><span>+ 12 más</span><span class="meta">stack</span></div>
+          </div>
+        </div>
+        <div class="engine">
+          <div class="label">Capa de orquestación</div>
+          <div class="name">kretia · core</div>
+          <div class="desc">workflows · datos unificados<br>reglas · alertas · auditoría</div>
+          <div class="stats">
+            <div class="s">Latencia<b>~180ms</b></div>
+            <div class="s">Uptime<b>99.94%</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="col-label">Acciones <b>· output</b></div>
+          <div class="node-col">
+            <div class="node"><span class="dot"></span><span>Slack #ops</span><span class="meta">comms</span></div>
+            <div class="node"><span class="dot"></span><span>Notion docs</span><span class="meta">docs</span></div>
+            <div class="node"><span class="dot"></span><span>Airtable</span><span class="meta">datos</span></div>
+            <div class="node"><span class="dot"></span><span>Panel custom</span><span class="meta">control</span></div>
+            <div class="node node--dim"><span class="dot"></span><span>Equipo (humano)</span><span class="meta">decisión</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="diagram-foot">
+      <span>↙ Herramientas existentes &amp; fuentes</span>
+      <span class="c">Ejemplo ilustrativo · cada sistema se diseña a medida</span>
+      <span>Acciones, datos limpios &amp; visibilidad ↘</span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== POSITIONING / §05 (lavender) =================== -->
+<div class="pos-band" data-screen-label="Posicionamiento">
+  <div class="wrap pos-grid">
+    <div class="pos-body">
+      <div class="eyebrow">§05 — Dónde encajamos</div>
+      <h2>Un segmento del mercado sin atender bien.</h2>
+      <p>Hay empresas con complejidad real, agilidad como ventaja y foco absoluto en resultados. Ni las soluciones plug &amp; play escalan con ellas, ni las consultoras enterprise les sirven.</p>
+      <p><b>Kretia trabaja exactamente en ese hueco.</b></p>
+    </div>
+    <div class="spectrum">
+      <div class="sp-card">
+        <div><div class="tag">Modelo A</div><h4>Soluciones simples</h4></div>
+        <p>Plantillas y SaaS estándar. Arrancan rápido. Se rompen al escalar con tu complejidad real.</p>
+        <div class="v">×</div>
+      </div>
+      <div class="sp-card mid">
+        <div><div class="tag">Kretia</div><h4>Sistemas a medida</h4></div>
+        <p>Diseñados para tu operativa real. Escalan contigo. Sin gastos enterprise ni implantaciones eternas.</p>
+        <div class="v">✓</div>
+      </div>
+      <div class="sp-card">
+        <div><div class="tag">Modelo B</div><h4>Enterprise</h4></div>
+        <p>Implantaciones de meses, equipos enormes, presupuestos inviables para empresas medianas.</p>
+        <div class="v">×</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== MEASURE / §06 =================== -->
+<section id="measure" data-screen-label="Cómo medimos">
+  <div class="wrap">
+    <div class="measure-head">
+      <div>
+        <div class="eyebrow">§06 — Cómo medimos impacto</div>
+        <h2 class="section-title">Sin "00%" inventados. Métricas que tú podrás auditar.</h2>
+      </div>
+      <div>
+        <p class="lede">En vez de presumir de números, te enseñamos exactamente cómo medimos el impacto de cada sistema &mdash; antes, durante y al cerrar el proyecto. Si no se puede medir, no se promete.</p>
+        <p class="note"><b>Nota.</b> Los números reales aparecerán aquí en cuanto tengamos casos cerrados.</p>
+      </div>
+    </div>
+    <div class="measure-list">
+      <div class="measure-row">
+        <div class="tag">M1 · Tiempo</div>
+        <div class="formula">Δt = <b>base</b> − t<sub>post</sub></div>
+        <div class="desc"><strong>Horas/semana eliminadas en tareas manuales.</strong> Medimos las horas dedicadas a procesos repetitivos antes y después del rediseño, por rol y proceso.</div>
+      </div>
+      <div class="measure-row">
+        <div class="tag">M2 · Estabilidad</div>
+        <div class="formula">éxito<sub>auto</sub> / total · <b>%</b></div>
+        <div class="desc"><strong>Procesos que se ejecutan sin intervención.</strong> Porcentaje de ejecuciones automáticas que llegan a destino sin tocar el sistema. Auditable en logs.</div>
+      </div>
+      <div class="measure-row">
+        <div class="tag">M3 · Cohesión</div>
+        <div class="formula"><b>Σ</b> fuentes/flujo</div>
+        <div class="desc"><strong>Herramientas conectadas y datos unificados.</strong> Reducción de las "islas" de información: cuántas fuentes quedan coordinadas en flujo continuo.</div>
+      </div>
+      <div class="measure-row">
+        <div class="tag">M4 · Escala</div>
+        <div class="formula">cap<sub>post</sub> / cap<sub>pre</sub> · <b>×</b></div>
+        <div class="desc"><strong>Volumen procesable sin añadir equipo.</strong> Cuánto puede crecer la operación con la misma plantilla. Capacidad marginal por proceso.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== AUDIENCE / §07 =================== -->
+<section style="background:var(--paper);" data-screen-label="Esto es para ti si">
+  <div class="wrap">
+    <div class="audience-grid">
+      <div>
+        <div class="eyebrow">§07 — Esto es para ti si…</div>
+        <h2 class="section-title">Si te reconoces en tres o más, hablemos.</h2>
+        <p class="lede">No trabajamos con todo el mundo. Kretia tiene sentido para empresas que han crecido más rápido que sus sistemas y necesitan rediseñarlos antes de que el caos sea estructural.</p>
+      </div>
+      <ul class="aud-list">
+        <li><span class="ic">✓</span><span class="text">Tu operativa depende de <em>procesos manuales</em> que nadie ha cuestionado en años.</span></li>
+        <li><span class="ic">✓</span><span class="text">Tienes <em>seis o más herramientas</em> que no hablan entre sí como deberían.</span></li>
+        <li><span class="ic">✓</span><span class="text">Tu equipo dedica horas a <em>tareas repetitivas</em> que no aportan criterio.</span></li>
+        <li><span class="ic">✓</span><span class="text">Has <em>crecido más rápido</em> que tus sistemas y se nota.</span></li>
+        <li><span class="ic">✓</span><span class="text">Los procesos clave viven en la cabeza de <em>una sola persona</em>.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CTA / §08 =================== -->
+<section id="cta" class="cta" data-screen-label="CTA final">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div>
+        <div class="eyebrow">§08 — Próximo paso</div>
+        <h2>Empieza con un <span class="hl">análisis</span> de tu operativa.</h2>
+        <p class="cta-lede">Sin compromiso. Una llamada de 45 minutos, una auditoría de tu stack y un informe corto con los 3&ndash;5 procesos donde puedes ganar más tiempo en menos esfuerzo. Decides tú si seguimos.</p>
+        <div class="cta-actions">
+          <button type="button" class="btn" data-form>Solicitar análisis de operativa</button>
+          <a href="mailto:hola@kretia.com" class="btn btn--ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);">Escribir un email</a>
+        </div>
+      </div>
+      <aside class="cta-side">
+        <div class="label">Qué incluye:</div>
+        <dl>
+          <div class="row"><dt>Duración</dt><dd>45 min</dd></div>
+          <div class="row"><dt>Auditoría</dt><dd>Stack actual</dd></div>
+          <div class="row"><dt>Entregable</dt><dd>Informe 3&ndash;5</dd></div>
+          <div class="row"><dt>Coste</dt><dd><b>Gratuito</b></dd></div>
+          <div class="row"><dt>Plazo</dt><dd>&lt; 48h</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span class="logo"><svg class="logo-k" viewBox="0 0 78 100" aria-hidden="true"><rect x="6" y="4" width="19" height="92" rx="3"></rect><rect x="40" y="14" width="30" height="30" rx="4"></rect><rect x="40" y="56" width="30" height="30" rx="4"></rect></svg><span class="logo-word">retia</span></span>
+    <span>© 2026 Kretia · Automatización inteligente de procesos</span>
+    <span>hola@kretia.com</span>
+  </div>
+</footer>
+
+<!-- =================== CONTACT MODAL =================== -->
+<div class="modal-overlay" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+  <div class="modal" id="leadCard">
+    <div class="modal-top">
+      <button type="button" class="modal-close" id="leadClose" aria-label="Cerrar">×</button>
+      <div class="eyebrow">Análisis de operativa · gratuito</div>
+      <h3 id="leadTitle">Cuéntanos dónde duele tu operativa.</h3>
+      <p>Te respondemos en menos de 48h con los 3&ndash;5 procesos donde puedes ganar más tiempo en menos esfuerzo.</p>
+    </div>
+    <div class="modal-body">
+      <form id="leadForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Nombre <span class="req">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-company">Empresa <span class="req">*</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-size">Tamaño del equipo</label>
+            <select id="f-size" name="teamSize">
+              <option value="">Selecciona…</option>
+              <option>1–10</option>
+              <option>10–50</option>
+              <option>50–250</option>
+              <option>+250</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-msg">¿Qué proceso te está costando más hoy?</label>
+          <textarea id="f-msg" name="message" placeholder="Ej: el onboarding de cliente nuevo nos lleva 4h y pasa por 5 herramientas a mano…"></textarea>
+        </div>
+        <div class="form-error" id="leadError"></div>
+        <button type="submit" class="btn" id="leadSubmit">Enviar solicitud</button>
+        <p class="form-note">Sin compromiso. No compartimos tus datos. Te contactamos solo para este análisis.</p>
+      </form>
+    </div>
+    <div class="form-success">
+      <div class="check">✓</div>
+      <h3>Solicitud recibida.</h3>
+      <p>Gracias. Hemos registrado tu solicitud y te escribimos a tu email en menos de 48&nbsp;horas con los procesos prioritarios.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // --- Live trace: clone & advance the ops lines so the panel feels alive ---
+  (function () {
+    var box = document.getElementById('trace');
+    if (!box) return;
+    var times = ['09:13:01','09:13:05','09:13:09','09:13:12','09:13:18','09:13:24'];
+    var ti = 0;
+    setInterval(function () {
+      var first = box.firstElementChild;
+      if (!first) return;
+      var clone = first.cloneNode(true);
+      var t = clone.querySelector('.t');
+      if (t) { t.textContent = times[ti % times.length]; ti++; }
+      clone.style.animation = 'none';
+      // re-trigger entrance animation
+      clone.style.opacity = '0';
+      box.appendChild(clone);
+      requestAnimationFrame(function () {
+        clone.style.transition = 'opacity .5s ease, transform .5s ease';
+        clone.style.transform = 'translateY(4px)';
+        requestAnimationFrame(function () { clone.style.opacity = '1'; clone.style.transform = 'none'; });
+      });
+      box.removeChild(first);
+    }, 2600);
+  })();
+
+  // --- Symptom highlight rotation ---
+  (function () {
+    var items = Array.prototype.slice.call(document.querySelectorAll('#symptoms li'));
+    if (!items.length) return;
+    var i = items.findIndex(function (el) { return el.classList.contains('active'); });
+    setInterval(function () {
+      items[i].classList.remove('active');
+      i = (i + 1) % items.length;
+      items[i].classList.add('active');
+    }, 2200);
+  })();
+
+  // --- Contact modal ---
+  (function () {
+    var overlay = document.getElementById('leadModal');
+    var card = document.getElementById('leadCard');
+    var form = document.getElementById('leadForm');
+    var submit = document.getElementById('leadSubmit');
+    var errBox = document.getElementById('leadError');
+    var lastFocus = null;
+
+    function open() {
+      lastFocus = document.activeElement;
+      overlay.classList.add('open');
+      card.classList.remove('done');
+      document.body.style.overflow = 'hidden';
+      var first = document.getElementById('f-name');
+      if (first) setTimeout(function () { first.focus(); }, 60);
+    }
+    function close() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    document.querySelectorAll('[data-form]').forEach(function (b) {
+      b.addEventListener('click', open);
+    });
+    document.getElementById('leadClose').addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+
+    function showError(msg) { errBox.textContent = msg; errBox.style.display = 'block'; }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errBox.style.display = 'none';
+      var data = {
+        name: form.name.value.trim(),
+        company: form.company.value.trim(),
+        email: form.email.value.trim(),
+        teamSize: form.teamSize.value,
+        message: form.message.value.trim(),
+        page: location.pathname
+      };
+      if (!data.name || !data.company || !data.email) { showError('Completa nombre, empresa y email.'); return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { showError('Revisa el email, no parece válido.'); return; }
+
+      submit.disabled = true;
+      submit.textContent = 'Enviando…';
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad status');
+        return r.json();
+      }).then(function () {
+        card.classList.add('done');
+      }).catch(function () {
+        showError('No se pudo enviar. Inténtalo de nuevo o escribe a hola@kretia.com.');
+        submit.disabled = false;
+        submit.textContent = 'Enviar solicitud';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es" data-direction="mint">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kretia — Portfolio · sistemas y webs que construimos</title>
+<meta name="description" content="Una selección de sistemas operativos, automatizaciones y webs diseñados y construidos por Kretia.">
+<meta name="theme-color" content="#8A4FFF">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='7 3 40 50'%3E%3Cg fill='%238A4FFF'%3E%3Crect x='9' y='5' width='12' height='44' rx='2.5'/%3E%3Crect x='20' y='27' width='12' height='12' rx='2.5'/%3E%3Crect x='33' y='16' width='12' height='12' rx='2.5'/%3E%3Crect x='33' y='39' width='12' height='12' rx='2.5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kretia-manual.css">
+<style>
+  /* ============ PORTFOLIO HEAD ============ */
+  .pf-hero { padding: 60px 0 40px; }
+  .pf-hero-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 60px; align-items: end; }
+  .pf-hero h1 {
+    font-family: var(--sans); font-weight: var(--display-weight);
+    font-size: clamp(40px, 5.4vw, 80px); line-height: 0.98;
+    letter-spacing: -0.045em; margin: 22px 0 0; text-wrap: balance;
+  }
+  .pf-hero h1 em { font-style: normal; color: var(--accent); }
+  .pf-hero p { font-size: 17px; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 460px; text-wrap: pretty; }
+
+  /* filter / count strip */
+  .pf-strip {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; margin-top: 48px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted);
+  }
+  .pf-strip .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pf-chip {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-2); padding: 7px 13px; border: 1px solid var(--line-2); border-radius: 999px;
+    background: transparent; cursor: pointer; transition: all .15s;
+  }
+  .pf-chip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .pf-chip.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 500; }
+  .pf-count b { color: var(--accent); font-weight: 600; }
+
+  /* ============ GRID ============ */
+  .pf-section { padding: 50px 0 110px; border-top: 0; }
+  .pf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 26px;
+  }
+  @media (min-width: 1180px) { .pf-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 1179px) and (min-width: 720px) { .pf-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .pcard {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .pcard:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line-2)); box-shadow: 0 24px 50px -30px color-mix(in srgb, var(--accent) 55%, transparent); }
+  .pcard.is-hidden { display: none; }
+
+  .pcard-media {
+    appearance: none; border: 0; padding: 0; margin: 0; display: block; width: 100%; cursor: pointer;
+    background: var(--bg); position: relative; border-bottom: 1px solid var(--line);
+  }
+  .pcard-media image-slot { width: 100%; height: 188px; display: block; }
+  .pcard-media .open-badge {
+    position: absolute; right: 12px; top: 12px; z-index: 3;
+    font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+    background: color-mix(in srgb, var(--ink) 78%, transparent); color: #fff; backdrop-filter: blur(6px);
+    padding: 6px 10px; border-radius: 999px; opacity: 0; transform: translateY(-4px); transition: all .18s;
+  }
+  .pcard:hover .open-badge { opacity: 1; transform: translateY(0); }
+
+  .pcard-body { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+  .pcard-cat { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); }
+  .pcard h3 { font-family: var(--sans); font-weight: 700; font-size: 19px; line-height: 1.15; letter-spacing: -0.025em; margin: 0; }
+  .pcard-desc { font-size: 13.5px; line-height: 1.5; color: var(--ink-2); margin: 0; flex: 1; }
+  .pcard-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .pcard-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pf-tag { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--line-2); border-radius: 999px; padding: 3px 8px; }
+  .pcard-link { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .pcard-link:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ghost "add" card */
+  .pcard-add {
+    border: 1.5px dashed var(--line-2); background: transparent; border-radius: 16px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    min-height: 320px; color: var(--muted); cursor: default; text-align: center; padding: 24px;
+  }
+  .pcard-add .plus { width: 42px; height: 42px; border-radius: 12px; border: 1.5px solid var(--line-2); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--accent); }
+  .pcard-add .t { font-family: var(--sans); font-weight: 600; font-size: 15px; color: var(--ink-2); }
+  .pcard-add .s { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; max-width: 220px; line-height: 1.6; }
+
+  /* ============ MODAL ============ */
+  .pf-modal {
+    position: fixed; inset: 0; z-index: 1000; display: none;
+    align-items: center; justify-content: center; padding: 28px;
+  }
+  .pf-modal.open { display: flex; }
+  .pf-scrim { position: absolute; inset: 0; background: color-mix(in srgb, var(--ink) 62%, transparent); backdrop-filter: blur(6px); opacity: 0; transition: opacity .2s ease; }
+  .pf-modal.open .pf-scrim { opacity: 1; }
+  .pf-dialog {
+    position: relative; width: min(960px, 100%); max-height: calc(100vh - 56px);
+    background: var(--paper); border: 1px solid var(--line-2); border-radius: 20px; overflow: hidden;
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.5);
+    transform: translateY(14px) scale(0.985); opacity: 0; transition: transform .22s ease, opacity .22s ease;
+  }
+  .pf-modal.open .pf-dialog { transform: none; opacity: 1; }
+  .pf-modal-media { background: var(--bg); border-right: 1px solid var(--line); min-height: 380px; position: relative; display: flex; }
+  .pf-modal-media image-slot { width: 100%; height: 100%; min-height: 380px; display: block; }
+  .pf-modal-body { padding: 34px 34px 30px; display: flex; flex-direction: column; overflow-y: auto; }
+  .pf-modal-cat { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; display: flex; gap: 10px; align-items: center; }
+  .pf-modal-cat .yr { color: var(--muted); }
+  .pf-modal h2 { font-family: var(--sans); font-weight: 800; font-size: 30px; line-height: 1.05; letter-spacing: -0.035em; margin: 0 0 16px; }
+  .pf-modal-detail { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+  .pf-modal-detail p { margin: 0 0 16px; }
+  .pf-modal-detail .essence-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin: 4px 0 12px; }
+  .pf-modal-detail ul { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 9px; }
+  .pf-modal-detail li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: start; font-size: 14px; color: var(--ink); line-height: 1.45; }
+  .pf-modal-detail li::before { content: "→"; color: var(--accent); font-weight: 700; }
+  .pf-modal-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+  .pf-modal-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .pf-close {
+    position: absolute; right: 14px; top: 14px; z-index: 5; appearance: none; cursor: pointer;
+    width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line-2);
+    background: color-mix(in srgb, var(--paper) 80%, transparent); backdrop-filter: blur(8px);
+    color: var(--ink); font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .pf-close:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+  @media (max-width: 760px) {
+    .pf-hero-grid { grid-template-columns: 1fr; gap: 30px; }
+    .pf-dialog { grid-template-columns: 1fr; max-height: calc(100vh - 40px); }
+    .pf-modal-media, .pf-modal-media image-slot { min-height: 240px; border-right: 0; border-bottom: 1px solid var(--line); }
+    .pf-modal-body { padding: 26px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== TOP BAR =================== -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="/" class="logo" aria-label="Kretia">
+      <svg class="kmark" viewBox="7 3 40 50" fill="currentColor" aria-hidden="true">
+        <rect x="9" y="5" width="12" height="44" rx="2.5"></rect>
+        <rect x="20" y="27" width="12" height="12" rx="2.5"></rect>
+        <rect x="33" y="16" width="12" height="12" rx="2.5"></rect>
+        <rect x="33" y="39" width="12" height="12" rx="2.5"></rect>
+      </svg><span class="word">retia</span>
+    </a>
+    <nav class="nav">
+      <a href="/"><span class="num">←</span>Inicio</a>
+      <a href="/#what">Qué hacemos</a>
+      <a href="/#method">Método</a>
+      <a href="#grid">Portfolio</a>
+    </nav>
+    <a href="/#cta" class="btn">Solicitar análisis <span class="arrow">→</span></a>
+  </div>
+</header>
+
+<!-- =================== HERO =================== -->
+<section class="pf-hero">
+  <div class="wrap">
+    <div class="pf-hero-grid">
+      <div>
+        <div class="eyebrow"><span class="num">§</span><span class="bar"></span><span>Portfolio · sistemas en producción</span></div>
+        <h1>Lo que dejamos <em>funcionando</em>.</h1>
+      </div>
+      <p>Una selección de sistemas operativos, automatizaciones y webs que hemos diseñado y construido. Pulsa cualquiera para ver lo esencial sin salir de aquí.</p>
+    </div>
+
+    <div class="pf-strip">
+      <div class="filters" id="filters">
+        <button class="pf-chip active" data-filter="all">Todo</button>
+        <button class="pf-chip" data-filter="automatización">Automatización</button>
+        <button class="pf-chip" data-filter="dashboard">Dashboards</button>
+        <button class="pf-chip" data-filter="web">Webs</button>
+        <button class="pf-chip" data-filter="datos">Datos</button>
+      </div>
+      <span class="pf-count"><b id="count">6</b> proyectos</span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== GRID =================== -->
+<section id="grid" class="pf-section">
+  <div class="wrap">
+    <div class="pf-grid" id="pf-grid">
+
+      <!-- ===== CARD 1 ===== -->
+      <article class="pcard" data-cats="automatización,datos"
+        data-title="Conciliación Stripe → Holded"
+        data-cat="Automatización financiera" data-year="2026" data-url="#">
+        <button class="pcard-media" type="button" aria-label="Ver detalle">
+          <span class="open-badge">Ver detalle</span>
+          <image-slot id="pf-stripe" shape="rect" placeholder="Captura del sistema / panel"></image-slot>
+        </button>
+        <div class="pcard-body">
+          <div class="pcard-cat">Automatización financiera</div>
+          <h3>Conciliación Stripe → Holded</h3>
+          <p class="pcard-desc">Cada cobro se concilia, etiqueta y archiva solo. Cierre contable sin copia-pega.</p>
+          <div class="pcard-foot">
+            <div class="pcard-tags"><span class="pf-tag">Stripe</span><span class="pf-tag">Holded</span><span class="pf-tag">n8n</span></div>
+            <a class="pcard-link" href="#" target="_blank" rel="noopener" data-stop>Visitar ↗</a>
+          </div>
+        </div>
+        <template class="detail">
+          <p>Sistema que escucha cada evento de pago en Stripe, lo concilia contra la factura correspondiente en Holded, lo etiqueta por línea de negocio y archiva el justificante en Drive — sin que nadie toque una hoja de cálculo.</p>
+          <div class="essence-label">Lo esencial</div>
+          <ul>
+            <li>Conciliación automática pago ↔ factura, con log auditable.</li>
+            <li>Etiquetado por cliente y línea de negocio.</li>
+            <li>Alertas en Slack solo cuando algo no cuadra.</li>
+            <li>Cierre mensual reducido de 2 días a unas horas.</li>
+          </ul>
+        </template>
+      </article>
+
+      <!-- ===== CARD 2 ===== -->
+      <article class="pcard" data-cats="dashboard,datos"
+        data-title="Panel de operaciones — Acme Logistics"
+        data-cat="Dashboard operativo" data-year="2026" data-url="#">
+        <button class="pcard-media" type="button" aria-label="Ver detalle">
+          <span class="open-badge">Ver detalle</span>
+          <image-slot id="pf-acme" shape="rect" placeholder="Captura del dashboard"></image-slot>
+        </button>
+        <div class="pcard-body">
+          <div class="pcard-cat">Dashboard operativo</div>
+          <h3>Panel de operaciones — Acme</h3>
+          <p class="pcard-desc">Una sola pantalla con el estado real de la operación, en vivo, para todo el equipo.</p>
+          <div class="pcard-foot">
+            <div class="pcard-tags"><span class="pf-tag">Retool</span><span class="pf-tag">Postgres</span></div>
+            <a class="pcard-link" href="#" target="_blank" rel="noopener" data-stop>Visitar ↗</a>
+          </div>
+        </div>
+        <template class="detail">
+          <p>Centralizamos cinco fuentes dispersas (ERP, CRM, mensajería y dos hojas de cálculo) en un panel único que muestra el estado de cada pedido en tiempo real, con semáforos de SLA y responsables asignados.</p>
+          <div class="essence-label">Lo esencial</div>
+          <ul>
+            <li>Estado de cada pedido en vivo, sin pedir nada a nadie.</li>
+            <li>Semáforos de SLA y alertas de retraso automáticas.</li>
+            <li>Una única fuente de verdad para todo el equipo.</li>
+          </ul>
+        </template>
+      </article>
+
+      <!-- ===== CARD 3 ===== -->
+      <article class="pcard" data-cats="automatización,web"
+        data-title="Onboarding automático de clientes"
+        data-cat="Automatización · Onboarding" data-year="2025" data-url="#">
+        <button class="pcard-media" type="button" aria-label="Ver detalle">
+          <span class="open-badge">Ver detalle</span>
+          <image-slot id="pf-onboarding" shape="rect" placeholder="Captura del flujo"></image-slot>
+        </button>
+        <div class="pcard-body">
+          <div class="pcard-cat">Automatización · Onboarding</div>
+          <h3>Onboarding automático</h3>
+          <p class="pcard-desc">Del formulario al cliente operativo en minutos: carpetas, accesos, tareas y bienvenida.</p>
+          <div class="pcard-foot">
+            <div class="pcard-tags"><span class="pf-tag">Typeform</span><span class="pf-tag">Notion</span><span class="pf-tag">Slack</span></div>
+            <a class="pcard-link" href="#" target="_blank" rel="noopener" data-stop>Visitar ↗</a>
+          </div>
+        </div>
+        <template class="detail">
+          <p>Cuando un cliente firma, un único formulario dispara todo: creación de carpetas en Drive, espacio en Notion, tareas asignadas, accesos y un mensaje de bienvenida personalizado. Lo que antes eran 7 pasos manuales ahora es uno.</p>
+          <div class="essence-label">Lo esencial</div>
+          <ul>
+            <li>7 pasos manuales reducidos a un formulario.</li>
+            <li>Carpetas, accesos y tareas creados al instante.</li>
+            <li>Nada se olvida: el proceso es siempre idéntico.</li>
+          </ul>
+        </template>
+      </article>
+
+      <!-- ===== CARD 4 ===== -->
+      <article class="pcard" data-cats="datos,automatización"
+        data-title="CRM unificado — Gmail + HubSpot"
+        data-cat="Capa de datos" data-year="2025" data-url="#">
+        <button class="pcard-media" type="button" aria-label="Ver detalle">
+          <span class="open-badge">Ver detalle</span>
+          <image-slot id="pf-crm" shape="rect" placeholder="Captura del CRM"></image-slot>
+        </button>
+        <div class="pcard-body">
+          <div class="pcard-cat">Capa de datos</div>
+          <h3>CRM unificado</h3>
+          <p class="pcard-desc">Correos, llamadas y formularios enriquecen una ficha de cliente única y siempre al día.</p>
+          <div class="pcard-foot">
+            <div class="pcard-tags"><span class="pf-tag">Gmail</span><span class="pf-tag">HubSpot</span></div>
+            <a class="pcard-link" href="#" target="_blank" rel="noopener" data-stop>Visitar ↗</a>
+          </div>
+        </div>
+        <template class="detail">
+          <p>Cada interacción — email, llamada, reunión o formulario — se vincula automáticamente a la ficha del cliente y se enriquece con datos de fuentes externas, dando al equipo comercial contexto completo sin trabajo manual.</p>
+          <div class="essence-label">Lo esencial</div>
+          <ul>
+            <li>Ficha de cliente única, siempre actualizada.</li>
+            <li>Enriquecimiento automático de leads (score incluido).</li>
+            <li>Cero entrada manual de datos en el CRM.</li>
+          </ul>
+        </template>
+      </article>
+
+      <!-- ===== CARD 5 ===== -->
+      <article class="pcard" data-cats="dashboard,datos"
+        data-title="Reporting financiero automático"
+        data-cat="Datos · Reporting" data-year="2025" data-url="#">
+        <button class="pcard-media" type="button" aria-label="Ver detalle">
+          <span class="open-badge">Ver detalle</span>
+          <image-slot id="pf-reporting" shape="rect" placeholder="Captura del informe"></image-slot>
+        </button>
+        <div class="pcard-body">
+          <div class="pcard-cat">Datos · Reporting</div>
+          <h3>Reporting financiero</h3>
+          <p class="pcard-desc">El informe de cada lunes se genera y se envía solo, con los números ya cuadrados.</p>
+          <div class="pcard-foot">
+            <div class="pcard-tags"><span class="pf-tag">Metabase</span><span class="pf-tag">Sheets</span></div>
+            <a class="pcard-link" href="#" target="_blank" rel="noopener" data-stop>Visitar ↗</a>
+          </div>
+        </div>
+        <template class="detail">
+          <p>Un pipeline recopila datos de facturación, gastos y tesorería, los cuadra, genera el informe semanal y lo distribuye a dirección cada lunes a las 8:00 — sin que nadie abra una hoja de cálculo.</p>
+          <div class="essence-label">Lo esencial</div>
+          <ul>
+            <li>Informe semanal automático, puntual y consistente.</li>
+            <li>Datos cuadrados desde tres fuentes distintas.</li>
+            <li>Dirección decide con números, no con intuiciones.</li>
+          </ul>
+        </template>
+      </article>
+
+      <!-- ===== CARD 6 ===== -->
+      <article class="pcard" data-cats="web"
+        data-title="Portal de proveedores"
+        data-cat="Web · Portal" data-year="2026" data-url="#">
+        <button class="pcard-media" type="button" aria-label="Ver detalle">
+          <span class="open-badge">Ver detalle</span>
+          <image-slot id="pf-portal" shape="rect" placeholder="Captura del portal web"></image-slot>
+        </button>
+        <div class="pcard-body">
+          <div class="pcard-cat">Web · Portal</div>
+          <h3>Portal de proveedores</h3>
+          <p class="pcard-desc">Los proveedores suben facturas y consultan pagos sin escribir un solo email.</p>
+          <div class="pcard-foot">
+            <div class="pcard-tags"><span class="pf-tag">Web</span><span class="pf-tag">API</span></div>
+            <a class="pcard-link" href="#" target="_blank" rel="noopener" data-stop>Visitar ↗</a>
+          </div>
+        </div>
+        <template class="detail">
+          <p>Un portal web a medida donde los proveedores suben facturas, consultan el estado de sus pagos y actualizan sus datos. Conectado directamente al ERP, elimina el ida y vuelta de emails y reduce los errores de entrada.</p>
+          <div class="essence-label">Lo esencial</div>
+          <ul>
+            <li>Autoservicio para proveedores 24/7.</li>
+            <li>Facturas validadas contra el ERP al subir.</li>
+            <li>Bandeja de entrada de administración, despejada.</li>
+          </ul>
+        </template>
+      </article>
+
+      <!-- ===== ADD (ghost) ===== -->
+      <div class="pcard-add" aria-hidden="true">
+        <div class="plus">+</div>
+        <div class="t">Próximo proyecto</div>
+        <div class="s">En construcción. Vuelve pronto.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span class="logo" style="color:var(--cta-ink);">
+      <svg class="kmark" viewBox="7 3 40 50" fill="currentColor" aria-hidden="true">
+        <rect x="9" y="5" width="12" height="44" rx="2.5"></rect>
+        <rect x="20" y="27" width="12" height="12" rx="2.5"></rect>
+        <rect x="33" y="16" width="12" height="12" rx="2.5"></rect>
+        <rect x="33" y="39" width="12" height="12" rx="2.5"></rect>
+      </svg><span class="word">retia</span>
+    </span>
+    <span>© 2026 Kretia · Diseño y automatización de sistemas operativos</span>
+    <span>hola@kretia.com</span>
+  </div>
+</footer>
+
+<!-- =================== MODAL =================== -->
+<div class="pf-modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="pf-scrim" data-close></div>
+  <div class="pf-dialog">
+    <button class="pf-close" data-close aria-label="Cerrar">✕</button>
+    <div class="pf-modal-media" id="modal-media"></div>
+    <div class="pf-modal-body">
+      <div class="pf-modal-cat"><span id="modal-cat"></span><span class="yr" id="modal-year"></span></div>
+      <h2 id="modal-title"></h2>
+      <div class="pf-modal-detail" id="modal-detail"></div>
+      <div class="pf-modal-tags" id="modal-tags"></div>
+      <div class="pf-modal-actions">
+        <a class="btn cta-primary" id="modal-visit" href="#" target="_blank" rel="noopener">Visitar la web <span class="arrow">↗</span></a>
+        <button class="btn btn--ghost" data-close type="button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== TWEAKS =================== -->
+<div id="tweaks-root"></div>
+
+<script src="image-slot.js"></script>
+<script>
+(function () {
+  const grid = document.getElementById('pf-grid');
+  const modal = document.getElementById('modal');
+  const mMedia = document.getElementById('modal-media');
+  const mCat = document.getElementById('modal-cat');
+  const mYear = document.getElementById('modal-year');
+  const mTitle = document.getElementById('modal-title');
+  const mDetail = document.getElementById('modal-detail');
+  const mTags = document.getElementById('modal-tags');
+  const mVisit = document.getElementById('modal-visit');
+  let lastFocus = null;
+
+  function openProject(card) {
+    lastFocus = document.activeElement;
+    mCat.textContent = card.dataset.cat || '';
+    mYear.textContent = card.dataset.year ? '· ' + card.dataset.year : '';
+    mTitle.textContent = card.dataset.title || '';
+    const tpl = card.querySelector('template.detail');
+    mDetail.innerHTML = tpl ? tpl.innerHTML : '';
+    // tags
+    mTags.innerHTML = '';
+    card.querySelectorAll('.pcard-tags .pf-tag').forEach(function (t) {
+      const s = document.createElement('span');
+      s.className = 'pf-tag'; s.textContent = t.textContent;
+      mTags.appendChild(s);
+    });
+    // visit link
+    const url = card.dataset.url || '#';
+    mVisit.href = url;
+    mVisit.style.display = (url && url !== '#') ? '' : 'none';
+    // clone the card's image-slot (shares persistence id → same image, larger)
+    mMedia.innerHTML = '';
+    const slot = card.querySelector('image-slot');
+    if (slot) {
+      const clone = slot.cloneNode(false);
+      mMedia.appendChild(clone);
+    }
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const c = modal.querySelector('.pf-close');
+    if (c) c.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    mMedia.innerHTML = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  grid.addEventListener('click', function (e) {
+    if (e.target.closest('[data-stop]')) return;
+    const media = e.target.closest('.pcard-media');
+    if (media) { openProject(media.closest('.pcard')); }
+  });
+
+  modal.addEventListener('click', function (e) {
+    if (e.target.closest('[data-close]')) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // ---- filters ----
+  const chips = document.getElementById('filters');
+  const countEl = document.getElementById('count');
+  chips.addEventListener('click', function (e) {
+    const btn = e.target.closest('.pf-chip');
+    if (!btn) return;
+    chips.querySelectorAll('.pf-chip').forEach(function (c) { c.classList.toggle('active', c === btn); });
+    const f = btn.dataset.filter;
+    let n = 0;
+    grid.querySelectorAll('.pcard').forEach(function (card) {
+      const cats = (card.dataset.cats || '').split(',');
+      const show = f === 'all' || cats.indexOf(f) !== -1;
+      card.classList.toggle('is-hidden', !show);
+      if (show) n++;
+    });
+    countEl.textContent = n;
+  });
+})();
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="kretia-tweaks.jsx"></script>
+
+</body>
+</html>

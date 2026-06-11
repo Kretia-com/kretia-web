@@ -1,0 +1,17 @@
+{
+  "name": "kretia-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing de Kretia + endpoint de captura de leads",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13"
+  }
+}
