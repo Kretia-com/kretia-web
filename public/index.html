@@ -592,6 +592,71 @@
   .vswitch a.active { background: var(--violet); color: #fff; font-weight: 500; }
   .vswitch .label { padding: 8px 4px 8px 12px; color: var(--muted); font-size: 10px; }
 
+  /* ============ PANEL CAPTION (C4) ============ */
+  .panel-caption {
+    padding: 10px 18px 14px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.38);
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+  }
+
+  /* ============ INTRO TILES (C5) ============ */
+  .intro-tiles { border-top: 1px solid rgba(255,255,255,0.1); }
+  .intro-tiles-inner { display: grid; grid-template-columns: repeat(3,1fr); }
+  .intro-tile {
+    padding: 26px 36px;
+    display: flex; align-items: flex-start; gap: 14px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .intro-tile:last-child { border-right: 0; }
+  .intro-tile .it-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(195,190,247,0.15); color: var(--lavender);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex: 0 0 auto; font-weight: 700;
+  }
+  .intro-tile .it-label { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .intro-tile .it-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+  /* ============ SOLUCIONES (C1) ============ */
+  .sol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .sol-card {
+    border: 1.5px solid var(--line); border-radius: 16px; padding: 30px;
+    background: var(--bg); display: flex; flex-direction: column; gap: 10px;
+    transition: border-color .15s;
+  }
+  .sol-card:hover { border-color: var(--violet); }
+  .sol-card.is-next { border-style: dashed; opacity: 0.6; }
+  .sol-card .sol-tag { font-family: var(--mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--violet); }
+  .sol-card h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+  .sol-card p { font-size: 15px; color: var(--ink-2); line-height: 1.55; margin: 0; flex: 1; }
+  .sol-link { margin-top: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--violet); text-decoration: none; }
+  .sol-link:hover { text-decoration: underline; }
+
+  /* ============ SECURITY (C2) ============ */
+  .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .sec-item { border: 1px solid var(--line); border-radius: 12px; padding: 24px 26px; }
+  .sec-label { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--violet); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px; }
+  .sec-item h4 { font-size: 16px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .sec-item p { font-size: 14px; color: var(--ink-2); line-height: 1.55; margin: 0; }
+
+  /* ============ FAQ (C3) ============ */
+  .faq-list { margin-top: 40px; }
+  .faq-item { border-top: 1px solid var(--line); }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-item summary {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; font-size: 17px; font-weight: 700; letter-spacing: -0.015em;
+    cursor: pointer; list-style: none; color: var(--ink); gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; flex: 0 0 auto; font-size: 20px; font-weight: 300; color: var(--violet); }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-body { padding: 0 0 20px; font-size: 15px; color: var(--ink-2); line-height: 1.6; max-width: 680px; margin: 0; }
+
   @media (max-width: 1024px) {
     .hero-inner, .band-inner, .problem-head, .do-grid, .anatomy-head, .pos-grid, .measure-head, .audience-grid, .cta-grid { grid-template-columns: 1fr; gap: 44px; }
     .method-grid { grid-template-columns: 1fr; }
@@ -599,6 +664,10 @@
     .measure-row { grid-template-columns: 1fr; gap: 14px; }
     .diagram-inner { grid-template-columns: 1fr; }
     .diagram-svg { display: none; }
+    .intro-tiles-inner { grid-template-columns: 1fr; }
+    .intro-tile { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .intro-tile:last-child { border-bottom: 0; }
+    .sol-grid, .security-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -613,9 +682,11 @@
     <nav class="nav">
       <a href="#problem">Problema</a>
       <a href="#what">Qué hacemos</a>
+      <a href="#soluciones">Soluciones</a>
       <a href="#method">Método</a>
       <a href="#system">Sistema</a>
       <a href="#measure">Impacto</a>
+      <a href="#faq">FAQ</a>
       <a href="/portfolio">Portfolio</a>
     </nav>
     <button type="button" class="btn" data-form>Analiza ahora</button>
@@ -654,6 +725,7 @@
         <span>Procesos hoy <b>142</b> · errores <b>0</b></span>
         <span>Intervención manual <b>0</b></span>
       </div>
+      <p class="panel-caption">Ejemplo ilustrativo: cada línea es una tarea que antes hacía una persona a mano, ejecutándose sola.</p>
     </div>
   </div>
 
@@ -663,6 +735,32 @@
       <div class="cell"><div class="k">Modelo</div><div class="v">Diseño <span>+</span> construcción</div></div>
       <div class="cell"><div class="k">Stack</div><div class="v">23 integraciones</div></div>
       <div class="cell"><div class="k">Disponibilidad</div><div class="v">3 slots <span>· Q3 2026</span></div></div>
+    </div>
+  </div>
+
+  <div class="intro-tiles">
+    <div class="wrap intro-tiles-inner">
+      <div class="intro-tile">
+        <div class="it-icon">⇄</div>
+        <div>
+          <div class="it-label">Conectamos tus herramientas</div>
+          <div class="it-desc">Hacemos que tu stack hable un solo idioma, sin fricciones ni exportaciones manuales.</div>
+        </div>
+      </div>
+      <div class="intro-tile">
+        <div class="it-icon">↺</div>
+        <div>
+          <div class="it-label">Automatizamos tareas repetitivas</div>
+          <div class="it-desc">Las tareas que tu equipo repite cada día se ejecutan solas, con lógica auditable.</div>
+        </div>
+      </div>
+      <div class="intro-tile">
+        <div class="it-icon">◎</div>
+        <div>
+          <div class="it-label">Damos control y visibilidad</div>
+          <div class="it-desc">Sabes qué está pasando en tu operativa, cuándo y por qué, en tiempo real.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -722,6 +820,28 @@
         <div class="cap-row"><span class="name"><span class="b">↳</span> Paneles operativos</span><span class="tool">retool · metabase</span></div>
         <div class="cap-row"><span class="name"><span class="b">↳</span> Onboarding y handover</span><span class="tool">loom · runbooks</span></div>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SOLUCIONES / §02b (C1) =================== -->
+<section id="soluciones" data-screen-label="Soluciones">
+  <div class="wrap">
+    <div class="eyebrow">§02b — Soluciones</div>
+    <h2 class="section-title">Lo que hacemos en la práctica.</h2>
+    <p class="lede">Dos vías concretas: un producto ya disponible y más en camino.</p>
+    <div class="sol-grid">
+      <div class="sol-card">
+        <span class="sol-tag">Portal · Contabilidad</span>
+        <h3>Facto</h3>
+        <p>El portal donde los clientes suben facturas y los contables las descargan. Sin papel, sin correos, sin búsquedas imposibles.</p>
+        <a class="sol-link" href="https://facto.kretia.com" target="_blank" rel="noopener">Visitar Facto ↗</a>
+      </div>
+      <div class="sol-card is-next">
+        <span class="sol-tag">Próximamente</span>
+        <h3>Más soluciones</h3>
+        <p>Seguimos construyendo. El siguiente producto está en desarrollo y lo anunciaremos cuando esté listo.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -913,6 +1033,70 @@
         <li><span class="ic">✓</span><span class="text">Has <em>crecido más rápido</em> que tus sistemas y se nota.</span></li>
         <li><span class="ic">✓</span><span class="text">Los procesos clave viven en la cabeza de <em>una sola persona</em>.</span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SEGURIDAD / §07b (C2) =================== -->
+<section id="seguridad" data-screen-label="Seguridad y transparencia">
+  <div class="wrap">
+    <div class="eyebrow">§07b — Seguridad y transparencia</div>
+    <h2 class="section-title">Sistemas que puedes auditar, entender y controlar.</h2>
+    <div class="security-grid">
+      <div class="sec-item">
+        <span class="sec-label">Auditable</span>
+        <h4>Stack auditable</h4>
+        <p>Cada automatización tiene logs, trazas y documentación viva. Puedes revisar qué hace cada proceso, cuándo y por qué, sin depender de nosotros para entenderlo.</p>
+      </div>
+      <div class="sec-item">
+        <span class="sec-label">Independencia</span>
+        <h4>Sin dependencia de proveedor</h4>
+        <p>Usamos herramientas estándar y abiertas. Al terminar el proyecto, el sistema es tuyo: puedes mantenerlo, auditarlo y ampliarlo sin atarte a Kretia.</p>
+      </div>
+      <div class="sec-item">
+        <span class="sec-label">Transición</span>
+        <h4>Transición controlada</h4>
+        <p>No cortamos y sustituimos. Cada cambio se introduce en paralelo al proceso actual, con validación y vuelta atrás posible hasta que el equipo confíe en el nuevo sistema.</p>
+      </div>
+      <div class="sec-item">
+        <span class="sec-label">RGPD</span>
+        <h4>Privacidad desde el diseño</h4>
+        <p>Los sistemas que construimos cumplen con el RGPD por arquitectura: minimización de datos, accesos por rol y ningún dato procesado fuera de tu control sin consentimiento explícito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FAQ / §07c (C3) =================== -->
+<section id="faq" style="background:var(--paper);" data-screen-label="Preguntas frecuentes">
+  <div class="wrap">
+    <div class="eyebrow">§07c — Preguntas frecuentes</div>
+    <h2 class="section-title">Las preguntas que nos hacen antes de empezar.</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Cuánto tiempo tarda un proyecto típico?</summary>
+        <p class="faq-body">Depende de la complejidad. Un proyecto estándar tiene tres fases: 2–3 semanas de análisis, 4–8 semanas de construcción y un handover final. En total, entre dos y cuatro meses desde la primera llamada hasta el sistema en producción.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Necesito cambiar mis herramientas actuales?</summary>
+        <p class="faq-body">No. Trabajamos con lo que ya tienes siempre que sea posible. Si hace falta una herramienta nueva, lo justificamos antes de proponerla. El objetivo es conectar mejor lo que existe, no vender software nuevo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué pasa cuando terminéis? ¿Dependemos de vosotros?</summary>
+        <p class="faq-body">No. Al cerrar el proyecto tu equipo tiene documentación viva, runbooks y formación para mantener y evolucionar los sistemas sin Kretia. Ofrecemos mantenimiento ligero opcional, pero nunca es obligatorio.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Trabajáis con empresas de cualquier sector?</summary>
+        <p class="faq-body">Trabajamos con empresas medianas con procesos operativos complejos, independientemente del sector. El requisito no es el sector, sino que haya procesos manuales repetitivos y herramientas que no hablan bien entre sí.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuál es el coste aproximado?</summary>
+        <p class="faq-body">Cada proyecto se presupuesta a medida según el alcance. Empezamos siempre con un análisis gratuito de 45 minutos para entender tu operativa y darte una estimación real antes de comprometer nada.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿En qué se diferencia Kretia de contratar a un freelance o una agencia de automatización?</summary>
+        <p class="faq-body">Un freelance suele resolver una automatización puntual. Una agencia grande implanta software estándar. Kretia rediseña la capa operativa completa: analiza procesos, conecta herramientas, construye sistemas coordinados y deja documentación real. No entregamos un Zap, entregamos un sistema.</p>
+      </details>
     </div>
   </div>
 </section>
